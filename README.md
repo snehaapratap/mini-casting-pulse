@@ -1,22 +1,27 @@
 
-```markdown
 # 🎬 Mini Casting Pulse
 
 This project processes raw casting breakdown data and generates a **daily summary** (`daily_pulse.csv`) that helps spot trends in film, TV, commercial, and voiceover work—without exposing any individual actor data.
 
-## 🏗️ File Structure
 
-```
 
+### 🏗️ File Structure
+
+<pre>
 .
-├── build\_pulse.py            # Script to build the daily summary
+├── build_pulse.py            # Script to build the daily summary
 ├── data/
-│   └── breakdowns\_sample.csv # Raw casting breakdowns (provided)
+│   └── breakdowns_sample.csv # Raw casting breakdowns (provided)
 ├── output/
-│   └── daily\_pulse.csv       # Final aggregated output
+│   └── daily_pulse.csv       # Final aggregated output
 └── README.md                 # This file
+</pre>
 
-````
+---
+
+
+
+
 
 ## 🚀 Run the Project
 
@@ -27,6 +32,8 @@ python3 build_pulse.py \
 ````
 
 The script completes in <5 minutes and creates a clean daily trend summary using smart bucketing, aggregation, and light enrichment.
+
+---
 
 ## 📊 Columns in `daily_pulse.csv`
 
@@ -42,12 +49,15 @@ The script completes in <5 minutes and creates a clean daily trend summary using
 | `sentiment_avg_day`      | Sentiment of role descriptions (rounded to nearest 0.05)       |
 | `theme_ai_share_pct_day` | % of roles mentioning "AI", "robot", or "android"              |
 
+---
 ## 🧠 Design Choices
 
 * ✅ Buckets with `< 5` roles were dropped to protect anonymity.
 * ✅ Light Laplace noise (`np.random.laplace(0,1)`) was added to counts.
 * ✅ Median rounding: `int(round(x / 25.0)) * 25`
 * ✅ Grouped by `date_utc`, `region_code`, `proj_type_code`
+
+---
 
 ## 🧪 Mappings and Model Used
 
